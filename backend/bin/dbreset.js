@@ -45,7 +45,7 @@ const runSeedFiles = async () => {
     await runSchemaFiles();
     await runSeedFiles();
     pool.end()
-    console.log(chalk.cyan(`-> Finishing Setup ...`));
+    console.log(chalk.cyan(`-> Finishing Reset ...`));
     console.log();
     console.log(chalk.yellow('---------------------------------------------'));
     console.log(chalk.green.bold(`-> Database setup completed successfully.`));
