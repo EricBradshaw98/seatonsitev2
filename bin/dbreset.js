@@ -36,12 +36,20 @@ const runSeedFiles = async () => {
 
 (async () => {
   try {
-    console.log(`-> Connecting to PG using ${pool.options.connectionString} ...`);
+    console.log(chalk.yellow('---------------------------------------------'));
+    console.log(chalk.yellow.bold('          Database Reset'));
+    console.log(chalk.yellow('---------------------------------------------'));
+    console.log(chalk.cyan(`-> Connecting to PostgreSQL using: ${chalk.blue.bold(pool.options.connectionString)} `));
+    console.log(chalk.yellow('---------------------------------------------\n'));
     await pool.connect();
     await runSchemaFiles();
     await runSeedFiles();
-    pool.end();
-    console.log(`-> Database setup completed successfully.`);
+    pool.end()
+    console.log(chalk.cyan(`-> Finishing Setup ...`));
+    console.log();
+    console.log(chalk.yellow('---------------------------------------------'));
+    console.log(chalk.green.bold(`-> Database setup completed successfully.`));
+    console.log(chalk.yellow('---------------------------------------------'));
     process.exit(); // Add this line
   } catch (err) {
     console.error(chalk.red(`Failed due to error: ${err}`));

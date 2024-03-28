@@ -1,9 +1,9 @@
 // users.js
 const express = require('express');
-const router = express.Router(); // create an Express router
+const listing = express.Router(); // create an Express router
 const db = require('../db/db.js'); // Adjust the path as necessary
 
-router.get('/', async (req, res) => {
+listing.get('/', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM listings');
     res.json(result.rows);
@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+listing.post("/", async (req, res) => {
 
   return res.status(200).json({ success: true });
 });
 
-module.exports = router;
+module.exports = listing;

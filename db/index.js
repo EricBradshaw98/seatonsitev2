@@ -13,9 +13,9 @@ const pool = new Pool({
 
 (async () => {
   try {
-    console.log(chalk.yellow('---------------------------------------------'));
-    console.log(chalk.yellow.bold('          Server Setup Initialization'));
-    console.log(chalk.yellow('---------------------------------------------\n'));
+    console.log(chalk.yellow('----------------------------------------------'));
+    console.log(chalk.yellow.bold('          Server Initialization'));
+    console.log(chalk.yellow('----------------------------------------------\n'));
     
     console.log(chalk.cyan(`-> Connecting to PostgreSQL using: ${chalk.blue.bold(pool.options.connectionString)} ...\n`));
     await pool.connect();
@@ -25,7 +25,13 @@ const pool = new Pool({
     pool.end();
     console.log(chalk.green.bold('✓ Database connected successfully.\n'));
 
-    console.log(chalk.green.bold(`✓ Express server is now running on port ${chalk.blue.bold(process.env.PORT)}.\n`));
+
+
+
+    console.log(chalk.yellow('----------------------------------------------'));
+    console.log(chalk.green.bold(`✓ Express server is now running on port ${chalk.blue.bold(process.env.PORT)}.✓`));
+    console.log(chalk.yellow('----------------------------------------------'));
+    
     
   } catch (err) {
     console.error(chalk.red.bold('✗ Failed due to error:'));
