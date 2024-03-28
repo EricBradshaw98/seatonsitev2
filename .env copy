@@ -4,4 +4,5 @@ DB_PASS = 123
 DB_NAME = sample
 DB_PORT = 5432
 PORT = 3001
+FRONT_ADDRESS = 'http://localhost:3000'
 JWT_SECRET = changeto32characterkey

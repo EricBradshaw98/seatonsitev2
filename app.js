@@ -8,14 +8,17 @@ const { query } = require('./db/db');
 const jwt = require('jsonwebtoken');
 const auth = require("./auth");
 const cors = require('cors');
+const front = process.env.FRONT_ADDRESS
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const photosRouter = require('./routes/photos');
+const listingsRouter = require('./routes/listings');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const protectedRouter = require('./routes/protected');
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: front }));
 
 
 
@@ -43,6 +46,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/photos', photosRouter);
+app.use('/listings', listingsRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/protected', protectedRouter);
