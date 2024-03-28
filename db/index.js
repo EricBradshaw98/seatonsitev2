@@ -23,8 +23,9 @@ const pool = new Pool({
     console.log(chalk.green.bold('✓ Connected to PostgreSQL successfully!\n'));
     
     pool.end();
-    console.log(chalk.green.bold('✓ Database connected successfully.'));
-    console.log(chalk.green.bold(`✓ Server is now running on port ${chalk.blue.bold(process.env.PORT)}.\n`));
+    console.log(chalk.green.bold('✓ Database connected successfully.\n'));
+
+    console.log(chalk.green.bold(`✓ Express server is now running on port ${chalk.blue.bold(process.env.PORT)}.\n`));
     
   } catch (err) {
     console.error(chalk.red.bold('✗ Failed due to error:'));

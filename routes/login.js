@@ -4,6 +4,7 @@ const login = express.Router();
 const bcrypt = require("bcrypt");
 const { query } = require('../db/db'); // Assuming db.js is in the same directory
 const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET
 
 // Define your route handler for login
 login.post("/", async (request, response) => {
@@ -37,7 +38,7 @@ login.post("/", async (request, response) => {
         userId: user.id,
         userEmail: user.email,
       },
-      "RANDOM-TOKEN", // Replace with your secret key
+      secret, // Replace with your secret key
       { expiresIn: "24h" }
     );
 

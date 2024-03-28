@@ -4,7 +4,7 @@
   "description": "a template for backend server with users db and samples",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/start",
+    "start": "nodemon ./bin/start",
     "dev": "nodemon ./bin/start",
     "db:reset": "node ./bin/dbreset"
   },

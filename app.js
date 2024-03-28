@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const protectedRouter = require('./routes/protected');
 const app = express();
 
 app.use(cors({ origin: 'http://localhost:3000' }));
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/protected', protectedRouter);
 
 
 module.exports = app;
