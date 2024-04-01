@@ -13,6 +13,18 @@ photos.get('/', async (req, res) => {
   }
 });
 
+photos.get('/:gallery_id', async (req, res) => {
+  const galleryId = req.params.gallery_id;
+  try {
+    const query = 'SELECT * FROM photos WHERE gallery_id = $1';
+    const result = await db.query(query, [galleryId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 photos.post("/", async (req, res) => {
 
   return res.status(200).json({ success: true });

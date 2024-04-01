@@ -48,7 +48,7 @@ const runSeedFiles = async () => {
     console.log(chalk.cyan(`-> Finishing Reset ...`));
     console.log();
     console.log(chalk.yellow('---------------------------------------------'));
-    console.log(chalk.green.bold(`-> Database setup completed successfully.`));
+    console.log(chalk.green.bold(`-> Database reset completed successfully.`));
     console.log(chalk.yellow('---------------------------------------------'));
     process.exit(); // Add this line
   } catch (err) {
