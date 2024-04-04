@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -17,6 +18,7 @@ const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const protectedRouter = require('./routes/protected');
 const eventRouter = require('./routes/events');
+const postsRouter = require('./routes/posts');
 const app = express();
 
 app.use(cors({ origin: front }));
@@ -53,6 +55,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/protected', protectedRouter);
 app.use('/events',eventRouter);
+app.use('/posts',postsRouter);
 
 
 module.exports = app;

@@ -43,7 +43,8 @@ export default function SignUp2() {
     password: "",
     first_name: "",
     last_name: "",
-    username: ""
+    username: "",
+    tokenKey: ""
   });
 
   const [name, setName] = useState('');
@@ -94,7 +95,9 @@ export default function SignUp2() {
         email: "",
         password: "",
         first_name: "",
-        last_name: ""
+        last_name: "",
+        username: "",
+        tokenKey: ""
       });
 
     } catch (error) {
@@ -183,6 +186,18 @@ export default function SignUp2() {
                   autoComplete="new-password"
                   onChange={handleChange}
                   value={formData.password}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="tokenKey"
+                  label="Enter your one time token"
+                  name="tokenKey"
+                  autoComplete="tokenKey"
+                  value={formData.tokenKey}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>

@@ -1,7 +1,7 @@
 import "../styles/login.scss";
 import React, { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -19,7 +19,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Cookies from "universal-cookie";
-const cookies = new Cookies();
+
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function Copyright(props) {
@@ -40,31 +40,46 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LoginPage(props) {
+  
 
   const { dispatch, state } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState('');
+  const cookies = new Cookies();
+const navigate = useNavigate();
+ 
 
 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`/login`, { email, password });
-
-
-      // Set a cookie with the value of the user
-      cookies.set("user_id", response.data.userId, { path: "/" });
-      cookies.set("email", response.data.email, { path: "/" });
-      cookies.set("user_name", response.data.username, { path: "/" });
-      // Change login state to true
-      dispatch({ type: "SET_LOGIN_STATE" });
+    if (response.ok) {
+      const data = await response.json();
+      cookies.set('token', data.token, { path: '/' }); // Set token cookie with HttpOnly flag
+      navigate('/');
+      console.log(data);
+      dispatch({ type: "SET_LOGIN_STATE", payload: true });
       window.location.reload();
-    } catch (error) {
-
-      alert("Login failed!");
+    } else {
+      const errorMessage = await response.json();
+      setError(errorMessage.message);
+      // Display error message to the user
+      alert(errorMessage.message);
     }
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to log in. Please try again later.'); // Display an alert if an error occurs
+  }
+};
 
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");

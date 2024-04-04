@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUserByEmail } = require('../db/queries/userQueries');
+const { getUserByEmail, getAdmin } = require('../db/queries/userQueries');
 const login = express.Router();
 const bcrypt = require("bcrypt");
 const { query } = require('../db/db'); // Assuming db.js is in the same directory
@@ -25,18 +25,14 @@ login.post("/", async (request, response) => {
       return response.status(400).json({ message: "Passwords do not match" });
     }
 
-    // Check if the user has logged in before
-    if (!user.has_logged_in) {
-      // Update the has_logged_in field in the database to true
-      const updateLoggedInQuery = 'UPDATE users SET has_logged_in = true WHERE id = $1';
-      await query(updateLoggedInQuery, [user.id]);
-    }
-
+   
     // Generate JWT token
     const token = jwt.sign(
       {
         userId: user.id,
         userEmail: user.email,
+        userUsername: user.username,
+        userAdmin: user.admin,
       },
       secret, // Replace with your secret key
       { expiresIn: "24h" }

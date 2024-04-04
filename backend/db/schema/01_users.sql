@@ -8,5 +8,5 @@ CREATE TABLE users(
   password VARCHAR(255) NOT NULL,
   created_at TIMESTAMP,
   updated_at TIMESTAMP,
-  has_logged_in BOOLEAN DEFAULT FALSE
+  admin BOOLEAN
 );

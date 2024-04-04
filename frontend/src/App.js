@@ -9,6 +9,7 @@ import {
 import LoginPage from "./pages/login";
 import useApplicationData from './hooks/useApplicationData';
 import SignUp from "./pages/RegistrationPage";
+import Admin from "./pages/admin";
 import Users from "./pages/users";
 import Listings from "./pages/listings";
 import Photos from "./pages/photos";
@@ -18,7 +19,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'; // Import the compil
 function App() {
 
 
-  const { state, setEmail, setPassword, dispatch } = useApplicationData();
+  const { state, setEmail, setPassword, dispatch, setDescription } = useApplicationData();
 
   return (
    <Router>
@@ -29,6 +30,7 @@ function App() {
       <Route path="/users" element={<Users state={state}/>} dispatch={dispatch} />
       <Route path="/listings" element={<Listings state={state} dispatch={dispatch}/>} />
       <Route path="/photos" element={<Photos state={state} dispatch={dispatch}/>} />
+      <Route path="/admin" element={<Admin state={state} dispatch={dispatch} setDescription={setDescription}/>} />
 
         <Route path="/sign-up" element={<SignUp state={state} />} />
         <Route

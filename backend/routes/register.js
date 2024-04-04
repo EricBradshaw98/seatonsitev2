@@ -11,9 +11,9 @@ register.post("/", async (request, response) => {
   try {
     
     const hashedPassword = await bcrypt.hash(request.body.password, 10);
-
+console.log(bcrypt.hash(request.body.password, 10))
     // Execute an SQL query to insert the new user into the database
-    const user = await insertUserQuery(request.body.email, hashedPassword, request.body.first_name, request.body.last_name, request.body.username);
+    const user = await insertUserQuery(request.body.email, hashedPassword, request.body.first_name, request.body.last_name, request.body.username, request.body.tokenKey);
 
     response.status(201).send({
       message: "User Created Successfully",

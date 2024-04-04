@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS posts CASCADE;
+
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    photo VARCHAR,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

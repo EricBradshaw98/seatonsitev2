@@ -15,6 +15,7 @@ const MyCalendar = ({ events }) => {
           events={ events }
           startAccessor="start"
           endAccessor="end"
+          defaultDate={new Date()} // Set defaultDate to the current date
           style={{ height: 700, width: '80%' }} // Note: '80%' is a string
         />
       </div>

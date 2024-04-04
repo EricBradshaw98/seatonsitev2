@@ -14,7 +14,16 @@ const initialState = {
   eventData: [],
   email: "",
   password: "",
-  searchQuery: ""
+  searchQuery: "",
+  description: "",
+  eventName: "",
+  eventStart: "",
+  eventEnd: "",
+  adminPage: "Posts",
+  postDescription: "",
+  postName: "",
+  postPhoto: "",
+  login: ""
 };
 
 const ACTIONS = {
@@ -25,7 +34,15 @@ const ACTIONS = {
   SET_LOGIN_STATE: "SET_LOGIN_STATE",
   SET_EMAIL_STATE: "SET_EMAIL_STATE",
   SET_PASSWORD_STATE: "SET_PASSWORD_STATE",
-  SET_QUERY_STATE: "SET_QUERY_STATE"
+  SET_QUERY_STATE: "SET_QUERY_STATE",
+  SET_DESCRIPTION_STATE: "SET_DESCRIPTION_STATE",
+  SET_EVENT_NAME_STATE: "SET_EVENT_NAME_STATE",
+  SET_EVENT_START_STATE: "SET_EVENT_START_STATE",
+  SET_EVENT_END_STATE: "SET_EVENT_END_STATE",
+  SET_ADMIN_PAGE_STATE: "SET_ADMIN_PAGE_STATE",
+  SET_POSTDESCRIPTION_STATE: "SET_POSTDESCRIPTION_STATE",
+  SET_POST_NAME_STATE: "SET_POST_NAME_STATE",
+  SET_POST_PHOTO_STATE: "SET_POST_PHOTO_STATE"
 };
 
 const reducer = (state, action) => {
@@ -46,6 +63,22 @@ const reducer = (state, action) => {
       return { ...state, password: action.payload }; 
     case ACTIONS.SET_QUERY_STATE:
       return { ...state, searchQuery: action.payload }; 
+      case ACTIONS.SET_DESCRIPTION_STATE:
+      return { ...state, description: action.payload }; 
+      case ACTIONS.SET_EVENT_NAME_STATE:
+      return { ...state, eventName: action.payload };
+      case ACTIONS.SET_EVENT_START_STATE:
+      return { ...state, eventStart: action.payload };
+      case ACTIONS.SET_EVENT_END_STATE:
+      return { ...state, eventEnd: action.payload };
+      case ACTIONS.SET_ADMIN_PAGE_STATE:
+      return { ...state, adminPage: action.payload };
+      case ACTIONS.SET_POSTDESCRIPTION_STATE:
+      return { ...state, postDescription: action.payload };
+      case ACTIONS.SET_POST_NAME_STATE:
+      return { ...state, postName: action.payload };
+      case ACTIONS.SET_POST_PHOTO_STATE:
+      return { ...state, postPhoto: action.payload };
     default:
       return state;
   }
@@ -115,6 +148,13 @@ const useApplicationData = () => {
 
     fetchEventData(); // Call fetchUserData function
   }, []);
+
+  const setDescription = (description) => {
+    dispatch({ type: ACTIONS.SET_DESCRIPTION_STATE, payload: description }); // Dispatch action to set description
+  };
+  const setEventName = (eventName) => {
+    dispatch({ type: ACTIONS.SET_EVENT_NAME_STATE, payload: eventName }); // Dispatch action to set description
+  };
   
   
 
@@ -124,7 +164,8 @@ const useApplicationData = () => {
     email,
     setEmail,
     password,
-    setPassword
+    setPassword,
+    setDescription
     
   };
 };

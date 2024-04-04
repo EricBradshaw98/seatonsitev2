@@ -17,7 +17,7 @@ const Photos = ({ state, dispatch }) => {
     end: new Date(event.event_end),
   }));
   
-  console.log(eventData);
+ 
   
   
 
