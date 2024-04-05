@@ -1,0 +1,26 @@
+.banner {
+  background-color: #737373; /* Background color for the banner */
+  padding: 20px; /* Padding around the content */
+  text-align: center; /* Center-align content */
+  margin-top: 15vh;
+  border: 2px solid #000000; /* Border outline with black color */
+  color: #fff; /* Font color set to white */
+  font-family: 'Roboto', sans-serif; /* Use Roboto font family */
+  margin-bottom: 10vh;
+}
+
+.banner-header {
+  font-size: 4vh; /* Font size for the main header */
+  margin-bottom: 10px; /* Bottom margin for spacing */
+}
+
+.sub-header {
+  font-size: 2.75vh; /* Font size for the sub-header */
+  margin-bottom: 15px; /* Bottom margin for spacing */
+}
+
+.banner-paragraph {
+  font-size: 1.75vh; /* Font size for the paragraph */
+  line-height: 1.5; /* Line height for readability */
+}
+

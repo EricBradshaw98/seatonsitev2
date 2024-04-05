@@ -1,16 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
 .nav {
-  height: 100px;
+  height: auto;
   display: flex;
+ 
+  
   align-items: center;
   justify-content: space-between;
-  padding: 5px 120px;
-  position: relative;
+  width: 100%;
+ 
+  position: fixed;
   background-color: #393939;
+  z-index: 1000; /* Ensures it stays on top of other content */
 }
 
 .nav-logo img {
-  max-width: 200px;
-  max-height: 100px;
+  width: 40%; /* Adjust width to be relative */
+  height: 100px; /* Let the height adjust dynamically */
+  max-height: 150px; /* Set a maximum height */
 }
 
 .nav-link {
@@ -22,6 +38,7 @@
   padding: 0 1rem;
   height: 100%;
   border-radius: 12px;
+  text-transform: uppercase;
   cursor: pointer;
   &:hover {
     color: #b6b6b6;
@@ -29,6 +46,13 @@
   &.active {
       color: #686868;
   }
+}
+
+.nav-logout {
+  color: #000000;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 5px;
 }
 
 .bars {
@@ -56,13 +80,14 @@
 .nav-signup {
   display: flex;
   color: #fffefc;
+  flex-direction: row;
 }
 
 .logged-in {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 110px;
+  //flex-direction: row;
+ // align-items: center;
+ 
   font-weight: 600;
 }
 

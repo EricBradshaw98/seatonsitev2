@@ -6,10 +6,15 @@ import { jwtDecode } from "jwt-decode";
 import "../styles/navbar.scss";
 
 const Navbar = ({ dispatch, state }) => {
+  
   const [userId, setUserId] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [userUsername, setUserUsername] = useState(null);
   const cookies = new Cookies();
+  const token = cookies.get("token");
+  
+  
+
 
   useEffect(() => {
     const token = cookies.get("token");
@@ -18,6 +23,7 @@ const Navbar = ({ dispatch, state }) => {
       setUserId(decodedToken.userId);
       setUserEmail(decodedToken.userEmail);
       setUserUsername(decodedToken.userUsername);
+      
       dispatch({ type: "SET_LOGIN_STATE", payload: true }); // Set state.login to true if token exists
     }
   }, [dispatch]); // Adding dispatch to the dependency array
@@ -28,45 +34,66 @@ const Navbar = ({ dispatch, state }) => {
     window.location.reload()
   };
 
+
+  const decodedToken = token ? jwtDecode(token) : null;
+  const adminToken = decodedToken ? decodedToken.userAdmin : false;
+
   return (
     <>
       <nav className="nav">
+        
+        <div className="nav-logo">
         <img
           src={SeatonValley}
           alt="Seaton Valley"
           style={{ width: "100px", height: "auto" }}
         />
-        <div className="nav-logo">
-          <NavLink to="/stock" activeclassname="active"></NavLink>
         </div>
         <div className="nav-menu">
-          {userId && (
-            <NavLink to="/stock" className="nav-link" activeclassname="active">
-              Overview
+          
+            <NavLink to="/" className="nav-link" activeclassname="active">
+              Home
             </NavLink>
-          )}
-          {/* Conditionally render Plans link if userId is true */}
-          {userId && (
-            <NavLink to="/Plans" className="nav-link" activeclassname="active">
-              Plans
-            </NavLink>
-          )}
-          <NavLink to="/listings" className="nav-link" activeclassname="active">
-            Listings
-          </NavLink>
-          {userId && (
-            <NavLink to="/watchlist" className="nav-link" activeclassname="active">
-              My Watchlist
-            </NavLink>
-          )}
-          <NavLink to="/photos" className="nav-link" activeclassname="active">
-            Photos
-          </NavLink>
-          {userId && (
+
+            {adminToken && (
             <NavLink to="/admin" className="nav-link" activeclassname="active">
               Admin
             </NavLink>
           )}
+          
+          
+            <NavLink to="/weather" className="nav-link" activeclassname="active">
+              Weather
+            </NavLink>
+
+            <NavLink to="/aboutus" className="nav-link" activeclassname="active">
+              About Us
+            </NavLink>
+
+            <NavLink to="/fly" className="nav-link" activeclassname="active">
+              What we fly
+            </NavLink>
+
+            <NavLink to="/club" className="nav-link" activeclassname="active">
+              Club News
+            </NavLink>
+
+            <NavLink to="/galleries" className="nav-link" activeclassname="active">
+              Gallery
+            </NavLink>
+
+            <NavLink to="/contact" className="nav-link" activeclassname="active">
+              Contact
+            </NavLink>
+          
+          <NavLink to="/listings" className="nav-link" activeclassname="active">
+            Listings
+          </NavLink>
+          
+          <NavLink to="/photos" className="nav-link" activeclassname="active">
+            Photos
+          </NavLink>
+          
           <NavLink to="/users" className="nav-link" activeclassname="active">
             Users
           </NavLink>
@@ -81,13 +108,13 @@ const Navbar = ({ dispatch, state }) => {
         <div className="nav-signup">
           {userId ? (
             <>
-              <div className="logged-in">
+              <div className="nav-link">
                 <div className="nav-user">
-                  Logged in as: <span>{userUsername}</span>
+                  Logged in as: <span>{userUsername} </span>
                 </div>
-                <span>/</span>
-                <button className="nav-link" onClick={handleLogout}>
-                  Logout
+                <span> / </span>
+                <button className="nav-logout" onClick={handleLogout}>
+                   Logout
                 </button>
               </div>
             </>
