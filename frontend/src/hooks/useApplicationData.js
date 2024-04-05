@@ -23,7 +23,8 @@ const initialState = {
   postDescription: "",
   postName: "",
   postPhoto: "",
-  login: ""
+  login: "",
+  weather: null
 };
 
 const ACTIONS = {
@@ -42,7 +43,8 @@ const ACTIONS = {
   SET_ADMIN_PAGE_STATE: "SET_ADMIN_PAGE_STATE",
   SET_POSTDESCRIPTION_STATE: "SET_POSTDESCRIPTION_STATE",
   SET_POST_NAME_STATE: "SET_POST_NAME_STATE",
-  SET_POST_PHOTO_STATE: "SET_POST_PHOTO_STATE"
+  SET_POST_PHOTO_STATE: "SET_POST_PHOTO_STATE",
+  SET_WEATHER_STATE: "SET_WEATHER_STATE"
 };
 
 const reducer = (state, action) => {
@@ -79,6 +81,8 @@ const reducer = (state, action) => {
       return { ...state, postName: action.payload };
       case ACTIONS.SET_POST_PHOTO_STATE:
       return { ...state, postPhoto: action.payload };
+      case ACTIONS.SET_WEATHER_STATE:
+      return { ...state, weather: action.payload };
     default:
       return state;
   }

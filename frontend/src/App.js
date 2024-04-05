@@ -20,6 +20,7 @@ import Banner from "./components/Banner"
 import MyCalendar from "./components/Calendar";
 import MapContainer from './components/mapContainer';
 import useGoogleMapsApiKey from './hooks/useGoogleApi';
+import WeatherWidget from './components/WeatherWidget';
 
 
 function App() {
@@ -84,6 +85,7 @@ const HomePage = ({ state, dispatch, apiKey }) => {
       <Banner />
       <MyCalendar events={eventData} dispatch={dispatch} />
       <MapContainer mapStyles={mapStyles} center={center} zoom={zoom} apiKey={googleMapsApiKey} />
+      <WeatherWidget weather={state.weather} />
     </>
   );
 };
