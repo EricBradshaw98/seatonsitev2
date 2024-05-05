@@ -1,0 +1,32 @@
+.weather-widget-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3vh;
+}
+.entire{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tomorrowImage{
+  width:20%;
+  margin-top: 3vh;
+
+}
+
+.day {
+  width: 20vh;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color:rgb(145, 159, 174);
+  color: #fff;
+}
+
+.weatherimg {
+  width: 50px;
+  height: 50px;
+}

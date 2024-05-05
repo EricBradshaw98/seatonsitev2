@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+
 const cookies = new Cookies();
 
 
@@ -24,7 +25,10 @@ const initialState = {
   postName: "",
   postPhoto: "",
   login: "",
-  weather: null
+  weather: [],
+  galleries: [],
+  posts: [],
+  gallerystate:""
 };
 
 const ACTIONS = {
@@ -44,7 +48,10 @@ const ACTIONS = {
   SET_POSTDESCRIPTION_STATE: "SET_POSTDESCRIPTION_STATE",
   SET_POST_NAME_STATE: "SET_POST_NAME_STATE",
   SET_POST_PHOTO_STATE: "SET_POST_PHOTO_STATE",
-  SET_WEATHER_STATE: "SET_WEATHER_STATE"
+  SET_WEATHER_DATA: "SET_WEATHER_DATA",
+  SET_GALLERY_STATE: "SET_GALLERY_STATE",
+  SET_POSTS_DATA: "SET_POSTS_DATA",
+  SET_GALLERYSTATE_DATA: "SET_GALLERYSTATE_DATA",
 };
 
 const reducer = (state, action) => {
@@ -81,8 +88,14 @@ const reducer = (state, action) => {
       return { ...state, postName: action.payload };
       case ACTIONS.SET_POST_PHOTO_STATE:
       return { ...state, postPhoto: action.payload };
-      case ACTIONS.SET_WEATHER_STATE:
+      case ACTIONS.SET_WEATHER_DATA:
       return { ...state, weather: action.payload };
+      case ACTIONS.SET_GALLERY_STATE:
+      return { ...state, galleries: action.payload };
+      case ACTIONS.SET_POSTS_DATA:
+      return { ...state,posts: action.payload };
+      case ACTIONS.SET_GALLERYSTATE_DATA:
+      return { ...state, gallerystate: action.payload };
     default:
       return state;
   }
@@ -107,6 +120,24 @@ const useApplicationData = () => {
 
     fetchUserData(); // Call fetchUserData function
   }, []);
+
+
+  useEffect(() => {
+    
+    const fetchGalleryData = async () => {
+      try {
+        const response = await axios.get('/galleries'); 
+        dispatch({ type: ACTIONS.SET_GALLERY_STATE, payload: response.data });
+        console.log(response)
+      } catch (error) {
+        // Handle error
+        console.error('Error fetching gallery data:', error);
+      }
+    };
+
+    fetchGalleryData(); // Call fetchUserData function
+  }, []);
+  
 
   useEffect(() => {
     
@@ -152,6 +183,44 @@ const useApplicationData = () => {
 
     fetchEventData(); // Call fetchUserData function
   }, []);
+
+
+  useEffect(() => {
+    
+    const fetchPostData = async () => {
+      try {
+        const response = await axios.get('/posts'); 
+        dispatch({ type: ACTIONS.SET_POSTS_DATA, payload: response.data });
+      } catch (error) {
+        // Handle error
+        console.error('Error fetching Event data:', error);
+      }
+    };
+
+    fetchPostData(); // Call fetchUserData function
+  }, []);
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+       
+        await axios.post('/api/weather');
+          
+          setTimeout(async () => {
+            const response = await axios.get('/api/weatherupdated');
+            dispatch({ type: 'SET_WEATHER_DATA', payload: response.data });
+            // Store the fetched data in state
+          }, 1000);
+        
+      } catch (error) {
+        // Handle error
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    fetchWeatherData(); // Call the fetchWeatherData function
+  }, []);
+
 
   const setDescription = (description) => {
     dispatch({ type: ACTIONS.SET_DESCRIPTION_STATE, payload: description }); // Dispatch action to set description

@@ -10,23 +10,28 @@ body {
 
 
 .nav {
-  height: auto;
+  
   display: flex;
  
   
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 9vh;
  
   position: fixed;
   background-color: #393939;
   z-index: 1000; /* Ensures it stays on top of other content */
+  margin-top: 2vh;
+  margin-bottom:10vh;
 }
 
-.nav-logo img {
-  width: 40%; /* Adjust width to be relative */
-  height: 100px; /* Let the height adjust dynamically */
-  max-height: 150px; /* Set a maximum height */
+.nav-logo {
+   /* Adjust width to be relative */
+   /* Let the height adjust dynamically */
+ /* Set a maximum height */
+ height: 12vh;
+ padding: 2vh;
 }
 
 .nav-link {

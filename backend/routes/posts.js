@@ -8,15 +8,17 @@ const { insertPostQuery } = require('../db/queries/postQueries.js')
 posts.get('/', async (req, res) => {
   try {
     const result = await db.query(`
-      SELECT 
-        posts.*, 
-        users.username AS author_username, 
-        users.first_name AS author_first_name, 
-        users.last_name AS author_last_name
-      FROM 
-        posts
-      INNER JOIN 
-        users ON posts.user_id = users.id
+    SELECT 
+    posts.*, 
+    users.username AS author_username, 
+    users.first_name AS author_first_name, 
+    users.last_name AS author_last_name
+  FROM 
+    posts
+  INNER JOIN 
+    users ON posts.user_id = users.id
+  ORDER BY 
+    posts.date_updated DESC
     `);
 
     res.json(result.rows);

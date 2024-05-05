@@ -112,13 +112,14 @@ export default function SignUp2() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main',marginTop: '12vh', }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">

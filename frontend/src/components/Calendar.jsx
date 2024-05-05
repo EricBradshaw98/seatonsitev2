@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import '../styles/calendar.scss';
 
 const localizer = momentLocalizer(moment);
 

@@ -37,5 +37,6 @@ const pool = new Pool({
     console.error(chalk.red.bold('✗ Failed due to error:'));
     console.error(chalk.red(err));
     pool.end();
+    process.exit();
   }
 })();

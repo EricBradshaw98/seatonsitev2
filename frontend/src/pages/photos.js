@@ -44,8 +44,7 @@ const Photos = ({ state, dispatch }) => {
           <p>Updated At: {photo.updated_at}</p>
         </div>
       ))}
-      <YoutubeEmbed embedId="WlmY53ksBY4?si=VDrxoUHKu43fsocO" />
-      <MyCalendar events={eventData}  />
+      
     </div>
   );
 };

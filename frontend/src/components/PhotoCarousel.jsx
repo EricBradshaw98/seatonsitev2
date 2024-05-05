@@ -25,23 +25,34 @@ const PhotoViewer = () => {
   };
 
   const goToPreviousPhoto = () => {
-    setCurrentPhotoIndex((prevIndex) => {
-      if (prevIndex === 0) {
-        return photos.length - 1; // Loop back to the last photo if currently at the first one
-      } else {
-        return prevIndex - 1;
-      }
-    });
+    setFade(true);
+    setTimeout(() => {
+      setCurrentPhotoIndex((prevIndex) => {
+        if (prevIndex === 0) {
+          setFade(false); // Fade-out transition should end before changing the index
+          return photos.length - 1; // Loop back to the last photo if currently at the first one
+        } else {
+          setFade(false);
+          return prevIndex - 1;
+        }
+      });
+    }, 500); // Delay matches the transition duration
   };
 
   const goToNextPhoto = () => {
+
+    setFade(true);
+    setTimeout(() => {
     setCurrentPhotoIndex((prevIndex) => {
       if (prevIndex === photos.length - 1) {
+        setFade(false);
         return 0; // Loop back to the first photo if currently at the last one
       } else {
+        setFade(false);
         return prevIndex + 1;
       }
     });
+  }, 500);
   };
 
   return (

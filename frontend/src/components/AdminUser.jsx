@@ -136,6 +136,7 @@ export default function AdminUser(props) {
               backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
               width: '80%',
+              height:'80vh',
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} >

@@ -19,7 +19,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { jwtDecode } from 'jwt-decode';
 import Cookies from "universal-cookie";
 import ImageUpload from "./ImageDrop"
 const cookies = new Cookies();
@@ -46,7 +46,8 @@ export default function AdminPost(props) {
 
   const { dispatch, state, setDescription } = props;
   const [anchorEl, setAnchorEl] = useState(null);
-  
+  const token = cookies.get('token')
+  const decodedToken = jwtDecode(token);
 
 
   const handleSubmit = async (e) => {
@@ -55,7 +56,7 @@ export default function AdminPost(props) {
       const post_description = state.postDescription;
       const post_name = state.postName;
       const post_photo = state.postPhoto;
-      const user_id = 1;
+      const user_id = decodedToken.userId;
       
 
       // Log the data being sent in the request
@@ -145,6 +146,7 @@ export default function AdminPost(props) {
               backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
               width: '80%',
+              height:'100%',
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} >

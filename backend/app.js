@@ -20,6 +20,7 @@ const protectedRouter = require('./routes/protected');
 const eventRouter = require('./routes/events');
 const postsRouter = require('./routes/posts');
 const apiRouter = require('./routes/api');
+const galleriesRouter = require('./routes/galleries');
 const app = express();
 
 app.use(cors({ origin: front }));
@@ -58,6 +59,7 @@ app.use('/protected', protectedRouter);
 app.use('/events',eventRouter);
 app.use('/posts',postsRouter);
 app.use('/api', apiRouter)
+app.use('/galleries', galleriesRouter)
 
 
 module.exports = app;

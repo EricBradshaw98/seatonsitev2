@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { getUserByEmail, insertUserQuery } = require('../db/queries/userQueries');
+const db = require('../db/db.js');
 const bcrypt = require('bcrypt');
 const protected = express.Router();
 const secret = process.env.JWT_SECRET
@@ -11,6 +12,8 @@ const secret = process.env.JWT_SECRET
 protected.get('/', verifyToken, (req, res) => {
     // If token verification succeeded, user is authorized
     res.json({ message: 'Protected route accessed successfully' });
+   
+   
 });
 
 // Middleware to verify JWT token
@@ -26,6 +29,7 @@ function verifyToken(req, res, next) {
             return res.status(401).json({ message: 'Failed to authenticate token' });
         }
         req.userId = decoded.userId;
+        console.log(req.userId)
         next();
     });
 }

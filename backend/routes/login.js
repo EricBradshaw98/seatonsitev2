@@ -30,6 +30,7 @@ login.post("/", async (request, response) => {
     const token = jwt.sign(
       {
         userId: user.id,
+        
         userEmail: user.email,
         userUsername: user.username,
         userAdmin: user.admin,
@@ -39,6 +40,7 @@ login.post("/", async (request, response) => {
     );
 
     // Return success response with token
+    console.log(token)
     response.status(200).json({
       message: "Login Successful",
       email: user.email,

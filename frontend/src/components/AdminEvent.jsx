@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Cookies from "universal-cookie";
 import AdminPost from "./AdminPost"
 import AdminUser from "./AdminUser"
+import { jwtDecode } from 'jwt-decode';
 const cookies = new Cookies();
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -43,8 +44,8 @@ export default function AdminEvent(props) {
 
   const { dispatch, state, setDescription } = props;
   const [anchorEl, setAnchorEl] = useState(null);
-  
-
+  const token = cookies.get('token')
+  const decodedToken = jwtDecode(token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,14 +54,19 @@ export default function AdminEvent(props) {
       const event_name = state.eventName;
       const event_start = state.eventStart;
       const event_end = state.eventEnd;
-      const user_id = 1;
+      const user_id = decodedToken.userId;
       const active = true;
 
       // Log the data being sent in the request
       console.log("Sending data:", { description, user_id, event_end, event_name, event_start });
 
       // Make a POST request to create the event
-      const response = await axios.post(`http://localhost:3001/events`, { description, user_id, event_name, event_start, event_end, active });
+      const response = await axios.post(`http://localhost:3001/events`, { description, user_id, event_name, event_start, event_end, active },{
+        headers: {
+          Authorization: `Bearer ${token}` // Include the JWT token in the Authorization header
+        }
+      }
+    );
 
       // Reload the window after successful creation
       window.location.reload();
@@ -128,7 +134,7 @@ export default function AdminEvent(props) {
       
       <Box
         sx={{
-          height: '100vh',
+          height: '100%',
           backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
@@ -138,6 +144,7 @@ export default function AdminEvent(props) {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          
         }}
       >
         <Grid
@@ -156,6 +163,7 @@ export default function AdminEvent(props) {
             backgroundColor: 'rgba(255, 255, 255, 0.7)', 
     borderRadius: '4px',
     padding: '10px', 
+    marginTop: '12vh',
           }}
           
         >
@@ -170,6 +178,7 @@ export default function AdminEvent(props) {
               backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
               width: '80%',
+              height:'80vh',
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} >

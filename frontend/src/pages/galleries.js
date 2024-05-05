@@ -1,51 +1,53 @@
-import React from "react";
-import YoutubeEmbed from "../components/YoutubeEmbed";
-import photosStyles from "../styles/photos.module.scss"; // Import SCSS module
-import MyCalendar from "../components/Calendar";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Gallery from "../components/Gallery"
+import axios from "axios";
+import PhotoViewer from "../components/PhotoCarousel";
 
 
 const Galleries = ({ state, dispatch }) => {
-  const handleSearchChange = (event) => {
-    dispatch({ type: "SET_QUERY_STATE", payload: event.target.value });
-  };
- 
 
-  const eventData = state.eventData.map(event => ({
-    title: event.event_name,
-    description: 'Description for Event 1',
-    start: new Date(event.event_start),
-    end: new Date(event.event_end),
-  }));
-  
  
-  
-  
+  const navigate = useNavigate();
 
-  const filteredPhotos = state.photoData.filter(photo =>
-    photo.name.toLowerCase().includes(state.searchQuery ? state.searchQuery.toLowerCase() : "")
-  );
+
+
+  useEffect(() => {
+    const fetchPhotos = async (galleryId) => {
+      try {
+        const response = await axios.get(`/photos/${galleryId}`);
+        dispatch({ type: "SET_PHOTO_DATA", payload: response.data });
+      } catch (error) {
+        console.error("Error fetching photos:", error);
+      }
+    };
+
+    fetchPhotos(state.gallerystate);
+  }, [state.gallerystate, dispatch]);
+
+  const galleryComponents = state.galleries.map(gallery => (
+    <Gallery
+      key={gallery.id} // Assuming there's an id for each gallery
+      galleryData={{
+        imageSrc: gallery.image,
+        title: gallery.name // Assuming the name is the title
+      }}
+      onClick={() => {
+        console.log("Clicked gallery number:", gallery.id);
+        dispatch({ type: "SET_GALLERYSTATE_DATA", payload: gallery.id });
+        navigate(`/galleries/${gallery.id}`);
+      }}
+    />
+  ));
 
   return (
-    <div>
-      <h1>Photos</h1>
-      <input
-        type="text"
-        placeholder="Search photos..."
-        value={state.searchQuery}
-        onChange={handleSearchChange}
-        className={photosStyles.searchBar} // Apply SCSS module class
-      />
-      {filteredPhotos.map(photo => (
-        <div key={photo.id} className={photosStyles.photoContainer}> {/* Apply SCSS module class */}
-          <h2>{photo.name}</h2>
-          <img src={photo.url} alt={photo.name} />
-          <p>Description: {photo.description}</p>
-          <p>Created At: {photo.created_at}</p>
-          <p>Updated At: {photo.updated_at}</p>
-        </div>
-      ))}
-      <YoutubeEmbed embedId="WlmY53ksBY4?si=VDrxoUHKu43fsocO" />
-      <MyCalendar events={eventData}  />
+    <div className="entiregallery">
+    <div className="gallerycontainer">
+    
+      {galleryComponents}
+    
+    </div>
+    
     </div>
   );
 };
