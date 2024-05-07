@@ -56,20 +56,6 @@ const Admin = ({ state, dispatch, setDescription }) => {
   }
 
 
-
- 
-
- 
-
-  
-
-
-
-
-
-
-
-
   return (
     <div>
      

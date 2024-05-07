@@ -45,64 +45,30 @@ const EmailForm = () => {
     <div className="contact-section2">
       <div className="contact-header">
         <h2>Contact Us</h2>
-        <p className="description">Have a question or feedback? We'd love to hear from you! Please feel free to contact us using the form below:</p>
+        <p className="description">Have a question or feedback? We'd love to hear from you! Please feel free to contact us at the email below:</p>
       </div>
       <div className="contact-us-container">
-        <form onSubmit={handleSubmit} className="contact-form">
-          <div className="form-group">
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="input-field"
-            />
-          </div>
+      <div className="board">
+  <h2>SEATON VALLEY RC CLUB BOARD MEMBERS</h2>
+  <ul>
+    
+    <li><strong>Secretary Treasurer</strong> - Rick Glencross</li>
+    <li><strong>Membership</strong> - Doug Martin</li>
+    <li><strong>Website</strong> - Peter Bradshaw</li>
+    <li><strong>Special Events</strong> - Howard Goodman, Tom Mills, Aaron Yorke</li>
+    <li><strong>President</strong> - Eric Miller</li>
+  </ul>
+</div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="input-field"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">Message:</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              className="input-field"
-            ></textarea>
-          </div>
-
-          <button type="submit" className="submit-button">
-            Send Message
-          </button>
-        </form>
         <div className="contact-info">
           <div className="contact-directly">
             <h3>Reach Out Directly</h3>
             <ul>
               <li>
                 <FontAwesomeIcon icon={faEnvelope} />{" "}
-                <a href="mailto:contact@stockmarketmagnet.com">contact@stockmarketmagnet.com</a>
+                <a href="mailto:membership@seatonvalleyrc.club">membership@seatonvalleyrc.club</a>
               </li>
-              <li>
-                <FontAwesomeIcon icon={faPhone} /> +1 (123) 456-7890
-              </li>
+              
             </ul>
           </div>
 

@@ -6,14 +6,14 @@ import { jwtDecode } from "jwt-decode";
 import "../styles/navbar.scss";
 
 const Navbar = ({ dispatch, state }) => {
-
+  
   const [userId, setUserId] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [userUsername, setUserUsername] = useState(null);
   const cookies = new Cookies();
   const token = cookies.get("token");
-
-
+  
+  
 
 
   useEffect(() => {
@@ -23,15 +23,15 @@ const Navbar = ({ dispatch, state }) => {
       setUserId(decodedToken.userId);
       setUserEmail(decodedToken.userEmail);
       setUserUsername(decodedToken.userUsername);
-
+      
       dispatch({ type: "SET_LOGIN_STATE", payload: true }); // Set state.login to true if token exists
     }
   }, [dispatch]); // Adding dispatch to the dependency array
 
   const handleLogout = () => {
     cookies.remove("token");
-    dispatch({ type: "SET_LOGIN_STATE", payload: false });
-    window.location.reload();
+    dispatch({ type: "SET_LOGIN_STATE", payload: false }); 
+    window.location.reload()
   };
 
 
@@ -41,54 +41,60 @@ const Navbar = ({ dispatch, state }) => {
   return (
     <>
       <nav className="nav">
-
+        
         <div className="nav-logo">
-          <img
-            src={SeatonValley}
-            alt="Seaton Valley"
-
-          />
+        <img
+          src={SeatonValley}
+          alt="Seaton Valley"
+          
+        />
         </div>
         <div className="nav-menu">
+          
+            <NavLink to="/" className="nav-link" activeclassname="active">
+              Home
+            </NavLink>
 
-          <NavLink to="/" className="nav-link" activeclassname="active">
-            Home
-          </NavLink>
-
-          {adminToken && (
+            {adminToken && (
             <NavLink to="/admin" className="nav-link" activeclassname="active">
               Admin
             </NavLink>
           )}
+          
+          
+            
 
+            <NavLink to="/aboutus" className="nav-link" activeclassname="active">
+              About Us
+            </NavLink>
 
+            <NavLink to="/fly" className="nav-link" activeclassname="active">
+              What we fly
+            </NavLink>
 
+            <NavLink to="/club" className="nav-link" activeclassname="active">
+              Club News
+            </NavLink>
 
-          <NavLink to="/aboutus" className="nav-link" activeclassname="active">
-            About Us
+            <NavLink to="/galleries" className="nav-link" activeclassname="active">
+              Gallery
+            </NavLink>
+
+            <NavLink to="/contact" className="nav-link" activeclassname="active">
+              Contact
+            </NavLink>
+          
+          <NavLink to="/listings" className="nav-link" activeclassname="active">
+            Listings
           </NavLink>
-
-          <NavLink to="/fly" className="nav-link" activeclassname="active">
-            What we fly
+          
+          <NavLink to="/photos" className="nav-link" activeclassname="active">
+            Photos
           </NavLink>
-
-          <NavLink to="/club" className="nav-link" activeclassname="active">
-            Club News
+          
+          <NavLink to="/protected" className="nav-link" activeclassname="active">
+            Users
           </NavLink>
-
-          <NavLink to="/galleries" className="nav-link" activeclassname="active">
-            Gallery
-          </NavLink>
-
-          <NavLink to="/contact" className="nav-link" activeclassname="active">
-            Contact
-          </NavLink>
-
-
-
-
-
-
           {userId ? (
             <NavLink to="/login" className="nav-link" activeStyle>
               Manage Account
@@ -106,7 +112,7 @@ const Navbar = ({ dispatch, state }) => {
                 </div>
                 <span> / </span>
                 <button className="nav-logout" onClick={handleLogout}>
-                  Logout
+                   Logout
                 </button>
               </div>
             </>

@@ -28,7 +28,8 @@ const initialState = {
   weather: [],
   galleries: [],
   posts: [],
-  gallerystate:""
+  gallerystate:"",
+  modalPhoto: null
 };
 
 const ACTIONS = {
@@ -36,6 +37,8 @@ const ACTIONS = {
   SET_LISTING_DATA: "SET_LISTING_DATA",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_EVENT_DATA: "SET_EVENT_DATA",
+  SET_MODAL_PHOTO: "SET_MODAL_PHOTO",
+  CLOSE_MODAL_PHOTO: "CLOSE_MODAL_PHOTO",
   SET_LOGIN_STATE: "SET_LOGIN_STATE",
   SET_EMAIL_STATE: "SET_EMAIL_STATE",
   SET_PASSWORD_STATE: "SET_PASSWORD_STATE",
@@ -96,6 +99,10 @@ const reducer = (state, action) => {
       return { ...state,posts: action.payload };
       case ACTIONS.SET_GALLERYSTATE_DATA:
       return { ...state, gallerystate: action.payload };
+      case ACTIONS.SET_MODAL_PHOTO:
+      return { ...state, modalPhoto: action.payload };
+      case ACTIONS.CLOSE_MODAL_PHOTO:
+      return { ...state, modalPhoto: null };
     default:
       return state;
   }
@@ -228,6 +235,15 @@ const useApplicationData = () => {
   const setEventName = (eventName) => {
     dispatch({ type: ACTIONS.SET_EVENT_NAME_STATE, payload: eventName }); // Dispatch action to set description
   };
+
+  const closeModalPhoto = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL_PHOTO });
+  };
+
+  const setModalPhoto = (photo) => {
+    dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: photo });
+    console.log("photo",photo)
+  };
   
   
 
@@ -238,8 +254,10 @@ const useApplicationData = () => {
     setEmail,
     password,
     setPassword,
-    setDescription
-    
+    setDescription,
+    closeModalPhoto,
+    setModalPhoto,
+
   };
 };
 

@@ -6,6 +6,11 @@
   
 }
 
+.contact-header {
+  display: grid;
+  justify-items: center;
+}
+
 .content-sectioncontact {
   background-color: #eff1df;
   padding: 1vh;
@@ -15,6 +20,10 @@
   height: 12vh;
   
   margin-bottom: 1vh;
+}
+.board {
+  display: grid;
+  justify-items: center;
 }
 
 

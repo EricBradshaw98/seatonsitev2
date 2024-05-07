@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Cookies from "universal-cookie";
 import AdminPost from "./AdminPost"
 import AdminUser from "./AdminUser"
+import ImageUploader from "./ImageUploader"
 import { jwtDecode } from 'jwt-decode';
 const cookies = new Cookies();
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -219,6 +220,11 @@ export default function AdminEvent(props) {
                 sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Other')}>
                 Users
               </MenuItem>
+              <MenuItem 
+                variant="contained"
+                sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Photos')}>
+                Photos
+              </MenuItem>
             </Menu>
             <Typography component="h1" variant="h5">
               Add Events
@@ -313,6 +319,8 @@ export default function AdminEvent(props) {
 
 
           {state.adminPage === "Other" && <AdminUser state={state} dispatch={dispatch}  />}
+
+          {state.adminPage === "Photos" && <ImageUploader state={state} dispatch={dispatch}  />}
             
         </Grid>
       </Box>

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 95%;
-  background-color: beige;
+  background-color: rgb(145,159,173);
   border: 2px solid black; /* Add black border */
   border-radius: 10px; /* Add border radius */
   padding: 20px; /* Add padding for spacing */
@@ -12,11 +12,11 @@
 }
 .posts-container {
   width: 90%;
-  background-color: beige;
+  background-color: rgb(111,150,0);
   border: 2px solid black; /* Add black border */
-  border-radius: 10px; /* Add border radius */
+   /* Add border radius */
   padding: 20px; /* Add padding for spacing */
   margin-top: 15vh;
- align-content: center;
+ align-items: center;
 }
 

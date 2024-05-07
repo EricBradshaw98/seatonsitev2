@@ -22,6 +22,8 @@ import MyCalendar from "./components/Calendar";
 import MapContainer from './components/mapContainer';
 import useGoogleMapsApiKey from './hooks/useGoogleApi';
 import WeatherWidget from './components/WeatherWidget';
+import PhotoList from './components/PhotoList';
+import PhotoDetailsModal from './components/PhotoDetailsModal';
 import Modal from './components/Modal'
 import AboutBanner from './components/aboutBanner'
 import ContactPage from './pages/contactpage';
@@ -33,7 +35,7 @@ import Cookies from 'universal-cookie'
 function App() {
 
 
-  const { state, setEmail, setPassword, dispatch, setDescription } = useApplicationData();
+  const { state, setEmail, setPassword, dispatch, setDescription, closeModalPhoto, setModalPhoto } = useApplicationData();
   
 
   return (
@@ -45,6 +47,24 @@ function App() {
         <Route path="/club" element={<PostPage state={state} posts={state.posts} />} />
         <Route path="/contact" element={<ContactPage state={state} />} />
         <Route path="/galleries" element={<Galleries state={state} dispatch={dispatch} />} />
+        <Route
+  path="/galleries/:galleryId"
+  element={
+    state.modalPhoto ? (
+      <PhotoDetailsModal
+        modalPhoto={state.modalPhoto}
+        closeModalPhoto={closeModalPhoto}
+      />
+    ) : (
+      <PhotoList
+        state={state}
+        dispatch={dispatch}
+        closeModalPhoto={closeModalPhoto}
+        setModalPhoto={setModalPhoto}
+      />
+    )
+  }
+/>
         <Route path="/weather" element={<WeatherPage weather={state.weather} dispatch={dispatch} />} />
         <Route path="/aboutus" element={<AboutUsPage state={state} />} />
         <Route path="/listings" element={<Listings state={state} dispatch={dispatch} />} />

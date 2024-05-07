@@ -177,6 +177,11 @@ export default function AdminUser(props) {
                 sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Other')}>
                 Users
               </MenuItem>
+              <MenuItem 
+                variant="contained"
+                sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Photos')}>
+                Photos
+              </MenuItem>
             </Menu>
             <Typography component="h1" variant="h5">
               Add User
