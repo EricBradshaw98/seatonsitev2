@@ -26,6 +26,7 @@ const WeatherWidget = ({ weather, dispatch }) => {
           date={new Date(data.timestamp).toLocaleDateString()}
           temperature={data.temperature}
           windSpeed={data.wind_speed}
+          windDirection={data.wind_direction}
           precipitationProbability={data.precipitation_probability}
           uvIndex={data.uv_index}
         />

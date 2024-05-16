@@ -6,7 +6,7 @@
   border: 2px solid #000000; /* Border outline with black color */
   color: #fff; /* Font color set to white */
   font-family: 'Roboto', sans-serif; /* Use Roboto font family */
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 }
 
 .banner-header2 {
@@ -24,3 +24,9 @@
   line-height: 1.5; /* Line height for readability */
 }
 
+@media screen and (max-width: 768px) {
+  .banner2 {
+  margin-top: 42vh;
+  }
+
+}

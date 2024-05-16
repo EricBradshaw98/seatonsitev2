@@ -1,0 +1,95 @@
+.page-container {
+  display: flex;
+   /* Set height of the page container to fill the viewport */
+  position: relative;
+  min-height: 100vh;
+   /* Set height of the page container to fill the viewport */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+ 
+  align-items: start;
+  padding: 10px;
+  
+  background-color: #f2f2f2;
+  /* Ensure header stretches vertically */
+  width: 75%;
+  flex-grow: 1;
+  
+  .search-bar {
+    width: 70%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+  }
+
+  .emptylistingdiv{
+    margin-top: 15vh;
+  }
+}
+
+
+
+.listingitem {
+  width: 65%;
+  margin-top: 2vh;
+}
+
+.vertical-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom:0;
+  background-color: #ccc;
+   /* Make it stretch to the full height of the page */
+  width: 17%; /* Set the width of the vertical bar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  padding: 20px; /* Add padding for spacing */
+  flex-grow: 1;
+  h3, p {
+    text-align: center; /* Center text horizontally */
+    margin-bottom: 10px; /* Add spacing between headings and paragraphs */
+  }
+}
+
+
+
+.sidebar {
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 30vh;
+}
+
+.main-section {
+  padding: 20px;
+}
+
+@media (min-width: 400px) { /* Adjust breakpoint for cell phones */
+
+  .emptylistingdiv{
+    margin-top: 15vh;
+  }
+  .page-container {
+    flex-direction: row; /* Horizontal layout on larger screens */
+    min-height: 100vh;
+  }
+  .header {
+    width: 75%; /* Original width on larger screens */
+  }
+  .vertical-bar {
+    width: 17%; /* Original width on larger screens */
+    margin-top: 0; /* Remove margin-top on larger screens */
+  }
+  .listingitem {
+    width: 20%; /* Original width on larger screens */
+  }
+  .search-bar {
+    width: 70%; /* Original width on larger screens */
+  }
+}

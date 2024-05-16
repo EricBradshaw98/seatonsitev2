@@ -1,8 +1,9 @@
 import React from 'react';
 import '../styles/aboutBanner.scss'; // Import CSS for styling
-
+import Box from '@mui/material/Box';
 const aboutBanner = () => {
   return (
+    
     <div className="banner">
       <div className="blank"></div>
       <div className="content">

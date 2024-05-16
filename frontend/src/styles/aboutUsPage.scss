@@ -2,16 +2,26 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  color:rgb(255, 255, 255)
-  
+  color:rgb(255, 255, 255);
+  opacity: 0; /* Initial opacity set to 0 for the fade effect */
+  animation: fadeIn 1s forwards; /* Animation to fade in the element */
 }
-.about-us-empty{
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 */
+  }
+}
+
+.about-us-empty {
   margin-top: 15vh;
 }
 
 .section {
   margin-bottom: 40px;
- 
 }
 
 h2 {
@@ -31,4 +41,10 @@ a {
 
 a:hover {
   color: darkblue;
+}
+
+@media screen and (max-width: 768px) {
+  .about-us-empty {
+    margin-top: 20vh;
+  }
 }

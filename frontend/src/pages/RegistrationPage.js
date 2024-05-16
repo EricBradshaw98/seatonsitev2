@@ -212,7 +212,7 @@ export default function SignUp2() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: '#6F9600', color: '#FFFFFF' }}
             >
               Sign Up
             </Button>

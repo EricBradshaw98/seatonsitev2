@@ -10,7 +10,7 @@ import PhotoDetailsModal from "../components/PhotoDetailsModal";
 const PhotoListItem = ({ photo, setModalPhoto }) => {
   return (
     <section className="photo-list__item">
-      <img onClick={()=>setModalPhoto(photo)} className="photo-list__image" src={photo.url} alt="Photo" />
+      <img onClick={()=>setModalPhoto(photo)} className="photo-list__image" src={`/galleryphotos/${photo.url}`} alt="Photo" />
     </section>
   );
 };

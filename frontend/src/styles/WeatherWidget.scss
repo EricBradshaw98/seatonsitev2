@@ -30,3 +30,39 @@
   width: 50px;
   height: 50px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .weather-widget-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3vh;
+  }
+
+  .day {
+    width: 38vh;
+  
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(145, 159, 174);
+    color: #fff;
+    display: none; /* Hide all day items initially */
+  }
+
+  /* Show only the first day item */
+  .day:nth-child(1) {
+    display: block;
+  }
+  .tomorrowImage{
+    width:40%;
+    margin-top: 3vh;
+  
+  }
+
+ 
+}

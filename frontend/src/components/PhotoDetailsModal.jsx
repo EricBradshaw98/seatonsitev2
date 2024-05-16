@@ -19,7 +19,7 @@ const PhotoDetailsModal = ({state, dispatch, closeModalPhoto, modalPhoto}) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <section className="photo-details-modal__image-container">
-        <img className="photo-details-modal__image" src={modalPhoto.url} alt="Photo" />
+        <img className="photo-details-modal__image" src={`/galleryphotos/${modalPhoto.url}`} alt="Photo" />
       </section>
     </div>
   );

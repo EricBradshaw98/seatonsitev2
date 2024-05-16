@@ -1,5 +1,5 @@
 import "../styles/login.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -191,6 +191,12 @@ export default function AdminPost(props) {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Photos')}>
                 Photos
+              </MenuItem>
+
+              <MenuItem 
+                variant="contained"
+                sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Galleries')}>
+                Galleries
               </MenuItem>
             </Menu>
             <Typography component="h1" variant="h5">

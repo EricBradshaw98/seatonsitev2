@@ -1,5 +1,5 @@
 .contact-section2 {
-  max-width: 80vh;
+  width:90%;
   margin: 0 auto;
   padding: 0px 20px;
   font-family: 'Roboto', sans-serif;
@@ -12,10 +12,14 @@
 }
 
 .content-sectioncontact {
-  background-color: #eff1df;
+  background-color: #6F9600;
   padding: 1vh;
-  
+  color: #fff;
+  border: #fff;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Adjusted box shadow */
+  width:90%;
 }
+
 .emptydiv {
   height: 12vh;
   

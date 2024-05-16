@@ -29,6 +29,7 @@
     "nodemailer": "^6.9.13",
     "path": "^0.12.7",
     "pg": "^8.11.3",
+    "sharp": "^0.33.3",
     "socket.io": "^2.2.0",
     "universal-cookie": "^7.1.0",
     "ws": "^7.0.0"

@@ -1,4 +1,17 @@
-.rbc-calendar {
+.calendar-container {
   background-color: #ffffff;
-height: 60vh;
+height: 80vh;
+margin-bottom: 3vh;
+}
+
+@media screen and (max-width: 768px) {
+  .calendar-container {
+    background-color: #ffffff;
+  height: 60vh;
+  }
+
+   .calendar-container .rbc-event-content {
+    font-size: 9px; /* Adjust font size for the calendar on smaller screens */
+  }
+
 }

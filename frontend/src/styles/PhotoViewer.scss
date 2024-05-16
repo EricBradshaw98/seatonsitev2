@@ -56,3 +56,64 @@
 .nav-button:hover {
   color: #555;
 }
+
+
+@media (max-width: 768px) { /* Adjust breakpoint for cell phones */
+
+  .photo-viewer {
+    position: relative;
+    width: 100%;
+    height: 10vh; /* Adjusted height */
+    
+    /* Set margin-top to 5% of the height of the viewport */
+  }
+
+  .photo {
+    width: 100vw; /* Set width to 100% of the viewport width */
+    height: auto; /* Let the height adjust according to the aspect ratio */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    transition: opacity 1s ease; /* Apply a transition effect to the opacity property */
+    opacity: 1; /* Set initial opacity to fully visible */
+    margin-top: 28vh;
+  }
+
+  .navigation-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    background-color: #9eb9d3;
+    opacity: .55;
+    margin-bottom: 10vh;
+  }
+}
+
+@media (max-width: 1024px) { /* Adjust breakpoint for cell phones */
+
+  .photo-viewer {
+    position: relative;
+    width: 100%;
+    height: 10vh; /* Adjusted height */
+    
+    /* Set margin-top to 5% of the height of the viewport */
+  }
+
+  .photo {
+    width: 100vw; /* Set width to 100% of the viewport width */
+    height: auto; /* Let the height adjust according to the aspect ratio */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    transition: opacity 1s ease; /* Apply a transition effect to the opacity property */
+    opacity: 1; /* Set initial opacity to fully visible */
+    margin-top: 28vh;
+  }
+
+  .navigation-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    background-color: #9eb9d3;
+    opacity: .55;
+    margin-bottom: 10vh;
+  }
+}

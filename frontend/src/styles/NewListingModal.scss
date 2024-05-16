@@ -1,0 +1,43 @@
+.new-listing-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+  &__header {
+    display: flex;
+    align-items: center;
+     /* Space between the close button and title */
+    margin-bottom: 20px;
+
+    &__close-button {
+      display: flex;
+    align-items: center;
+    justify-content: space-between;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .MuiTextField-root {
+        margin-bottom: 20px;
+      }
+
+      .MuiButton-root {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

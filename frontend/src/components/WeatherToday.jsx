@@ -33,6 +33,7 @@ const WeatherToDay = ({ weather }) => {
       <p>{timestamp}</p>
       <p>Temperature: {temperature}°C</p>
       <p>Wind Speed: {wind_speed} m/s</p>
+      <p>Wind Direction: {wind_direction} m/s</p>
       <p>Precipitation Probability: {precipitation_probability}%</p>
       <p>UV Index: {uv_index}</p>
     </div>

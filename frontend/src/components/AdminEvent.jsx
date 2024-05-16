@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Cookies from "universal-cookie";
 import AdminPost from "./AdminPost"
 import AdminUser from "./AdminUser"
+import AdminGallery from "./AdminGallery"
 import ImageUploader from "./ImageUploader"
 import { jwtDecode } from 'jwt-decode';
 const cookies = new Cookies();
@@ -146,6 +147,7 @@ export default function AdminEvent(props) {
           justifyContent: 'center',
           alignItems: 'center',
           
+          
         }}
       >
         <Grid
@@ -224,6 +226,11 @@ export default function AdminEvent(props) {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Photos')}>
                 Photos
+              </MenuItem>
+              <MenuItem 
+                variant="contained"
+                sx={{ mt: 3, mb: 2, width: '100%' }} onClick={() => handleItemClick('Galleries')}>
+                Galleries
               </MenuItem>
             </Menu>
             <Typography component="h1" variant="h5">
@@ -321,6 +328,8 @@ export default function AdminEvent(props) {
           {state.adminPage === "Other" && <AdminUser state={state} dispatch={dispatch}  />}
 
           {state.adminPage === "Photos" && <ImageUploader state={state} dispatch={dispatch}  />}
+
+          {state.adminPage === "Galleries" && <AdminGallery state={state} dispatch={dispatch}  />}
             
         </Grid>
       </Box>

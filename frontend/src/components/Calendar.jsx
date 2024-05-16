@@ -6,21 +6,18 @@ import '../styles/calendar.scss';
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = ({ events }) => {
-  // Define your events list here
- 
   return (
-    
-      <div style={{ display: 'flex', justifyContent: 'center', border: '1px solid #ccc', padding: '20px' }}>
-        <Calendar
-          localizer={localizer}
-          events={ events }
-          startAccessor="start"
-          endAccessor="end"
-          defaultDate={new Date()} // Set defaultDate to the current date
-          style={{ height: 700, width: '80%' }} // Note: '80%' is a string
-        />
-      </div>
-    );
-  }
+    <div className="calendar-container">
+      <Calendar
+        localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        defaultDate={new Date()}
+        style={{ height: '100%', width: '95%' }}
+      />
+    </div>
+  );
+}
 
 export default MyCalendar;

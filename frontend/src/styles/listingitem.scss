@@ -1,0 +1,57 @@
+.listing {
+  display: flex;
+  width: 80%;
+  height: 20vh;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  .listing-image {
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 85%;
+      object-fit: cover;
+      object-position: top left;
+    }
+  }
+
+  .listing-details {
+    width: 75%;
+    padding: 10px;
+
+    .listing-name {
+      font-weight: bold;
+      
+    }
+
+    .listing-info {
+      flex: 1; /* Make .listing-info flex to allow its children to take up available space */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 480px) { /* Adjust breakpoint for cell phones */
+    .listing {
+      width: 100%; /* Full width on smaller screens */
+      height: auto; /* Allow the height to adjust based on content */
+      flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+  
+    .listing-image {
+      width: 100%;
+      height: auto;
+    }
+  
+    .listing-details {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}

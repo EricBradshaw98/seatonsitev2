@@ -43,3 +43,36 @@
   text-align: left; /* Align the text to the right */
   margin-top: 6vh;
 }
+
+
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 30vh; /* Reduce the height of the banner for smaller screens */
+  }
+  .banner-header {
+    font-size: 2.5vh; /* Font size for the main header */
+    margin-top: 0.25vh; /* Bottom margin for spacing */
+    font-weight: bold;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .blank{
+    width:75vh;
+  }
+
+  .sub-header {
+    font-size: 1vh; /* Font size for the sub-header */
+     /* Bottom margin for spacing */
+  }
+  
+  .banner-paragraph {
+    font-size: 1.25vh; /* Font size for the paragraph */
+    line-height: 1.25; /* Line height for readability */
+    text-align: left; /* Align the text to the right */
+    margin-top: 1vh;
+  }
+
+}

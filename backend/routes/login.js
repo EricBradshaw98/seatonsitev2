@@ -40,7 +40,7 @@ login.post("/", async (request, response) => {
     );
 
     // Return success response with token
-    console.log(token)
+    
     response.status(200).json({
       message: "Login Successful",
       email: user.email,
@@ -57,8 +57,6 @@ login.post("/", async (request, response) => {
 login.put('/', async (req, res) => {
   const { email, password, id: userId, username } = req.body;
 
-  
-
   try {
     if (email) {
       // Update email
@@ -70,7 +68,7 @@ login.put('/', async (req, res) => {
       `;
       const result = await query(updateEmailQuery, [email, userId]);
       res.json(result.rows[0]);
-    } if (password) {
+    } else if (password) {
       // Update password
       const hashedPassword = await bcrypt.hash(password, 10);
       const updatePasswordQuery = `
@@ -80,8 +78,8 @@ login.put('/', async (req, res) => {
       `;
       await query(updatePasswordQuery, [hashedPassword, userId]);
       res.send("Password updated successfully");
-    }if (username) {
-      // Update email
+    } else if (username) {
+      // Update username
       const updateUsernameQuery = `
         UPDATE users 
         SET username = $1
@@ -89,8 +87,8 @@ login.put('/', async (req, res) => {
         RETURNING *;
       `;
       const result = await query(updateUsernameQuery, [username, userId]);
-      res.json(result.rows[0]);}
-       else {
+      res.json(result.rows[0]);
+    } else {
       res.status(400).send("Bad request: Neither email nor password provided.");
     }
   } catch (error) {

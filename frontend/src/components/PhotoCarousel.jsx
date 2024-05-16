@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/PhotoViewer.scss'; // Import CSS for styling
 import first from '../assets/first.jpg';
@@ -15,6 +15,13 @@ const photos = [
 const PhotoViewer = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [fade, setFade] = useState(false);
+
+
+  useEffect(() => {
+    // Automatically go to the next photo every 5 seconds
+    const interval = setInterval(goToNextPhoto, 5000);
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [currentPhotoIndex]);
 
   const goToPhoto = (index) => {
     setFade(true); // Activate fade-out transition

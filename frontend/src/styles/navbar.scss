@@ -23,14 +23,14 @@ body {
   background-color: #393939;
   z-index: 1000; /* Ensures it stays on top of other content */
   margin-top: 2vh;
-  margin-bottom:10vh;
+  
 }
 
 .nav-logo {
    /* Adjust width to be relative */
    /* Let the height adjust dynamically */
  /* Set a maximum height */
- height: 12vh;
+ 
  padding: 2vh;
 }
 
@@ -131,4 +131,55 @@ body {
 .dark-mode {
   margin-left: -100px;
 }
+.bars {
+  display: none;
+  color: #808080;
+}
 
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+    padding: 10px;
+    align-items: center; 
+  }
+  .nav-logo {
+    height: 30%; /* Reset height */
+    width: 30%; /* Reset width */
+    
+  }
+ 
+
+  .nav-menu {
+    display: none;
+  }
+
+  .bars {
+    display: flex;
+    
+     /* Adjust horizontal positioning */
+    font-size: 2rem; /* Adjust icon size */
+    cursor: pointer;
+  }
+
+  .nav-menu.open {
+    display: block;
+  }
+
+  .nav-link {
+     /* Adjust padding for better spacing */
+  }
+
+  .nav-signup {
+     /* Add some space between menu items and sign-up/login */
+  }
+
+  .nav-link-divider {
+    display: none; /* Hide the divider on small screens */
+  }
+
+  .nav-user {
+    margin-bottom: 10px; /* Add some space between user info and logout button */
+  }
+}

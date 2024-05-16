@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
+import { jwtDecode } from 'jwt-decode';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -27,7 +27,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        MUI compnent reworked
+        MUI component reworked
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -48,7 +48,7 @@ export default function LoginPage(props) {
   const [error, setError] = useState('');
   const cookies = new Cookies();
 const navigate = useNavigate();
- 
+
 
 
 const handleSubmit = async (e) => {
@@ -96,7 +96,9 @@ const handleSubmit = async (e) => {
 
   const handleChangeEmail = async () => {
     try {
-      const user_id = cookies.get("user_id");
+      const tokenCookie = cookies.get('token')
+      const decodedCookie = jwtDecode(tokenCookie);
+      const user_id = decodedCookie.userId
 
       // Make an HTTP request to change the email
       const response = await axios.put(`/login`, {
@@ -104,6 +106,8 @@ const handleSubmit = async (e) => {
       });
 
       alert("Email changed successfully!");
+      console.log("userid",user_id)
+      console.log("email", newEmail)
     } catch (error) {
       console.error("Error changing email:", error);
       alert("Failed to change email. Please try again.");
@@ -112,7 +116,10 @@ const handleSubmit = async (e) => {
 
   const handleChangeUsername = async () => {
     try {
-      const user_id = cookies.get("user_id");
+      const tokenCookie = cookies.get('token')
+      const decodedCookie = jwtDecode(tokenCookie);
+      const user_id = decodedCookie.userId
+      
 
       // Make an HTTP request to change the email
       const response = await axios.put(`/login`, {
@@ -129,7 +136,9 @@ const handleSubmit = async (e) => {
   const handleChangePassword = async () => {
     try {
 
-      const user_id = cookies.get("user_id");
+      const tokenCookie = cookies.get('token')
+      const decodedCookie = jwtDecode(tokenCookie);
+      const user_id = decodedCookie.userId
 
       // Make an HTTP request to change the password
       const response = await axios.put(`/login`, {
@@ -175,8 +184,10 @@ const handleSubmit = async (e) => {
 
   const user_id = cookies.get("user_id");
   const user_email = cookies.get("email");
+  const token = cookies.get('token')
+  
 
-  if (!user_id) {
+  if (!token) {
     return (
       <ThemeProvider theme={defaultTheme}>
         <Grid container component="main" sx={{ height: '100vh' }}>
@@ -247,7 +258,7 @@ const handleSubmit = async (e) => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#6F9600', color: '#FFFFFF' }}
                 >
                   Sign In
                 </Button>
@@ -296,6 +307,7 @@ const handleSubmit = async (e) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                marginTop: '12vh',
               }}
             >
               <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -323,7 +335,7 @@ const handleSubmit = async (e) => {
                   onClick={handleChangeEmail}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#6F9600', color: '#FFFFFF' }}
 
                 >Change Email</Button>
 
@@ -345,7 +357,7 @@ const handleSubmit = async (e) => {
                   onClick={handleChangeUsername}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#6F9600', color: '#FFFFFF' }}
 
                 >Change Username</Button>
 
@@ -365,28 +377,9 @@ const handleSubmit = async (e) => {
                   onClick={handleChangePassword}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: '#6F9600', color: '#FFFFFF' }}
                 >Change Password</Button>
-                <div>Delete account for user #{user_id}</div>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="id"
-                  label="Input account ID to delete your account"
-                  type="text"
-                  id="id"
-                  autoComplete="current-password"
-                  value={newId}
-                  onChange={(e) => setNewId(e.target.value)}
-                  placeholder="Input account ID to delete your account"
-                />
-                <Button
-                  onClick={handleDelete}
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >Delete Account Permanently</Button>
+                
 
 
                 <Grid container>
